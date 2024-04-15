@@ -11,7 +11,6 @@ Discover user posts correlated with their information from JSONPlaceholder endpo
 - [Setup](#setup)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Overview
 
