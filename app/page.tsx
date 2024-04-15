@@ -80,41 +80,43 @@ const Home = () => {
   );
 
   return (
-    <div className='container mx-auto'>
-      {/* Render error message if there's an error, otherwise render the table */}
-      <h1 className='text-3xl font-semibold text-center my-8'>User Posts</h1>
-      {error ? ( // Conditional rendering based on the presence of error
-        <div className='text-red-500 text-center'>{error}</div> // Render error message otherwise render table if no errors
-      ) : (
-        <table className='w-full'>
-          <thead>
-            <tr>
-              <th className='px-4 py-2'>Username</th>
-              <th className='px-4 py-2'>Email</th>
-              <th className='px-4 py-2'>Company</th>
-              <th className='px-4 py-2'>Post Title</th>
-              <th className='px-4 py-2'>Post Contents</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              // Use Fragment to avoid unnecessary divs
-              <React.Fragment key={user.id}>
-                {/* Render UserRow component */}
-                <UserRow user={user} />
-                {getUserPosts(user.id).map(
-                  (
-                    post // Map over user's posts and render PostRow component
-                  ) => (
-                    <PostRow key={post.id} post={post} /> // Use unique key for each PostRow
-                  )
-                )}
-              </React.Fragment>
-            ))}
-          </tbody>
-        </table>
-      )}
-    </div>
+    <main>
+      <div className='container mx-auto'>
+        {/* Render error message if there's an error, otherwise render the table */}
+        <h1 className='text-3xl font-semibold text-center my-8'>User Posts</h1>
+        {error ? ( // Conditional rendering based on the presence of error
+          <div className='text-red-500 text-center'>{error}</div> // Render error message otherwise render table if no errors
+        ) : (
+          <table className='w-full'>
+            <thead>
+              <tr>
+                <th className='px-4 py-2'>Username</th>
+                <th className='px-4 py-2'>Email</th>
+                <th className='px-4 py-2'>Company</th>
+                <th className='px-4 py-2'>Post Title</th>
+                <th className='px-4 py-2'>Post Contents</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                // Use Fragment to avoid unnecessary divs
+                <React.Fragment key={user.id}>
+                  {/* Render UserRow component */}
+                  <UserRow user={user} />
+                  {getUserPosts(user.id).map(
+                    (
+                      post // Map over user's posts and render PostRow component
+                    ) => (
+                      <PostRow key={post.id} post={post} /> // Use unique key for each PostRow
+                    )
+                  )}
+                </React.Fragment>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+    </main>
   );
 };
 
